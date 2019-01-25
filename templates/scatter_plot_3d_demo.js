@@ -1,4 +1,3 @@
-//This is where you can put some Javascript Functions
 // Create a 3d scatter plot within d3 selection parent.
 function scatterPlot3d( parent )
 {
