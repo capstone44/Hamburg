@@ -8,4 +8,12 @@ def send_js(path):
 
 @app.route("/")
 def index():
-    return render_template('templates/index.html')
+    return render_template('index.html')
+
+@app.route("/quickstart")
+def quickstart():
+    return render_template('quickstart.html')
+
+@app.route("/plotmeasurement")
+def plotmeasurement():
+    return render_template('plotmeasurement.html')
