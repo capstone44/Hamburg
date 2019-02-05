@@ -8,7 +8,6 @@ function scatterPlot3d( parent )
       .style( "border", "none" )
       
   var scene = x3d.append("scene")
-
   scene.append("orthoviewpoint")
      .attr( "centerOfRotation", [5, 5, 5])
      .attr( "fieldOfView", [-5, -5, 15, 15])

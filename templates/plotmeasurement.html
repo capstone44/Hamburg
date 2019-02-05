@@ -2,9 +2,10 @@
 <html>
 <head>
 	<title>ACE Antenna Measurement System</title>
-	<link rel="stylesheet" href="static/css/spectre.min.css">
+    <link rel="stylesheet" href="static/css/spectre.min.css">
 	<link rel="stylesheet" href="static/css/spectre-exp.min.css">
 	<link rel="stylesheet" href="static/spectre-icons.min.css">
+    <link rel="stylesheet" href="static/plotmeasurement.css">
     <script type="text/script" src="static/js/d3.v5.min.js"></script>
     <script type="text/script" src="scatter_plot_3d_demo.js"></script>
 </head>
@@ -22,6 +23,8 @@
 		    <div class="hero-body">
             <h1>ACE Antenna Measurement System</h1>
             </div>
+            </div>
+        </div>
 
     <div id="divPlot"></div>
     <script>
@@ -30,26 +33,33 @@
       d3.select('#divPlot').style('width', "500px").style('height', "500px")
       scatterPlot3d( d3.select('#divPlot'));
     </script>
-            <div class="text-right">
-            <a 
-               class="btn btn-primary">Import Data
-            </a>
-            <br><br>
-            <a 
-               class="btn btn-primary">Rotation Time/Angle
-            </a>
-            <br><br>
-            <a 
-               class="btn btn-primary">Plot Data
-            </a>
-            <br><br>
-            <a
-               class="btn btn-primary">Plot Graph
-            </a>
-                
-            </div>            
+            
+<div class="flexcontainer">
+ 
+    
+    <div class="rows">
+        <a class="btn btn-primary">Import Data</a>
+        <br><br>
+        <a class="btn btn-primary">Plot Data</a>
+        <br><br>
+        <div class="slidecontainer">
+        <p>Plotting angle:</p>
+        <input type="range" min="1" max="100" value="50">
+        </div>    
+    </div>
+    <div class="rows">
+        
+        <img width="25%" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQH3o8CGhvuH7o-MuuQdp9pq30E75W0_gYU_BmVUG2GVEMAhbGrWQ" alt="">
+        </div>
+    
+ 
+</div>         
 
-		</div>
-	</div>
+		
+    
+    
+    
 </body>
 </html>
+
+
