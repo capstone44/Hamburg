@@ -17,3 +17,7 @@ def quickstart():
 @app.route("/plotmeasurement")
 def plotmeasurement():
     return render_template('plotmeasurement.html')
+
+@app.route("/angle")
+def setrotation():
+    print("Set new rotation to: ")
