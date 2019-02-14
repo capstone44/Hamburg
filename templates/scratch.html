@@ -1,17 +1,30 @@
 {% extends "layout.html" %}
 {% block content %}
-
-<h2>JavaScript Functions</h2>
-
-<p>This example calls a function which performs a calculation, and returns the result:</p>
-
-<p id="demo"></p>
-
-<script>
-function myFunction(p1, p2) {
-  return p1 * p2;
-}
-document.getElementById("demo").innerHTML = myFunction(4, 3);
-</script>
+<div class="text-center">
+		    <div class="hero-body">
+            <h1>ACE Antenna Measurement System</h1>
+            </div>
+            <div class="text-left">
+            <h2>Hardware</h2>
+            <ol>
+              <li>Choose antenna to measure</li>
+              <ul>
+                  <li>Antenna 1:<br>Patch antenna with a direct beam</li>
+                  <li>Antenna 2:<br>Patch antenna with 45 degree directed beam</li>
+              </ul>
+              <li>Insert chosen antenna into transmitting tower</li>
+              <li>Plug in the Antenna Measurement System into wall outlet</li>
+            </ol> 
+            <h2>Create Plot</h2>
+            <ol>
+              <li>Choose rotation time</li>
+              <li>Choose rotation angle</li>
+              <li>Run Antenna Measurement</li>
+              <li>Import data</li>
+              <li>Choose graph type</li>
+              <li>Plot graph</li>
+            </ol> 
+            </div>
+		</div>
 
 {% endblock %}
