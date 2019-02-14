@@ -16,9 +16,21 @@
             
 <div class="flexcontainer">
     <div class="rows">
-        <a class="btn btn-primary">Import Data</a>
+        <a class="btn btn-primary">Immmmmport Data</a>
         <br><br>
         <a class="btn btn-primary">Plot Data</a>
+        
+        
+        <p id="demo"></p>
+
+    <script>
+    function multiplier(x, y)
+        {
+            return x*y
+        }
+        document.getElementById("demo").innerHTML = multiplier(3,4)
+    </script>
+        
         <br><br>
         <div class="slidecontainer">
         <p>Plotting angle:</p>
@@ -26,7 +38,9 @@
         </div>    
     </div>
     <div class="rows">
+           <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
         
+        <div id="myDiv" style="width: 100%; height: 500px;"></div>
         <img width="25%" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQH3o8CGhvuH7o-MuuQdp9pq30E75W0_gYU_BmVUG2GVEMAhbGrWQ" alt="">
         </div>
  
