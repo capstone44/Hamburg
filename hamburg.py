@@ -21,3 +21,7 @@ def plotmeasurement():
 @app.route("/angle")
 def setrotation():
     print("Set new rotation to: ")
+    
+@app.route("/scratch")
+def scratch():
+    return render_template('scratch.html')
