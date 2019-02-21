@@ -1,6 +1,7 @@
 {% extends "layout.html" %}
 {% block content %}
 <script type="text/script" src="/static/js/scatter_plot_3d_demo.js"></script>
+<!--
 <div class="text-center">
     <div class="hero-body">
         <h1>ACE Antenna Measurement System</h1>
@@ -30,13 +31,13 @@
 </div>         
     
     
-    
-    
+-->
     
     
     <div id="myDiv"></div>
    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 <script>
+//Trace is the scatter data to be plotted. Need to replace it with the data from the socket.
     var trace = {
         type: "scatterpolar",
         r: [0, 0.75, 1.75, 2.25, 1.75, 0.75, 0],
@@ -46,6 +47,7 @@
 
     var data = [trace];
     
+//Layout specifies the look of the polar graph.
     var layout = {
         
         title: 'Antenna Pettern',
