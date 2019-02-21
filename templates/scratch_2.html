@@ -2,6 +2,7 @@
 {% block content %}
 <!DOCTYPE html>
 
+<!--
 <div class="text-center">
     <div class="hero-body">
         <h1>ACE Antenna Measurement System</h1>
@@ -30,27 +31,41 @@
            <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 </div>         
     
+-->
     
 
 
-
-
-
+    
 
 <div id="myDiv"></div>
-   <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+
 <script>
-    var trace = {
+    plotGraph(dataInit)
+</script>>
+    
+<button onclick="plotGraph(dataNode)">Import Data</button>
+
+
+<script>
+    var dataInit = {
+        type: "scatterpolar",
+        r: [0],
+        theta: [0],
+        mode: 'markers'
+    };
+    var dataNode = {
         type: "scatterpolar",
         r: [0, 0.75, 1.75, 2.25, 1.75, 0.75, 0],
         theta: [0, 45, 70, 90, 110, 135, 180],
         mode: 'markers'
     };
 
+
+function plotGraph(trace){
     var data = [trace];
-    
-    var layout = {
-        
+    var layout = {   
         title: 'Antenna Pettern',
         polar: {
             radialaxis: {
@@ -59,8 +74,8 @@
             }
         }
     };
-
     Plotly.newPlot('myDiv', data, layout, {});  
+}
 </script>
 
 {% endblock %}
