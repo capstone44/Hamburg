@@ -37,7 +37,7 @@ def scratch():
 def serialize_plot_data():
     data = {
         type = "scatterpolar",
-        mode = "markers",
+        mode = "lines+markers",
         r   = [],
         theta = []
     }
