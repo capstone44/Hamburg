@@ -1,7 +1,15 @@
 from flask import Flask
 from flask import render_template
 #import JSON
+import socket
+import sys
+import os
+import thread
+
+server_address = "/var/run/power_data.sock"
 app = Flask(__name__)
+
+global power_data
 
 @app.route('/static/<path:path>')
 def send_js(path):
@@ -22,7 +30,33 @@ def plotmeasurement():
 @app.route("/start")
 def start_test():
     #Send command to Sean to start AUT rotation and measurement...
+    def listen_for_data():
+	with app.test_request_context():
+	    # Make sure the socket does not already exist
+	    try:
+	        os.unlink(server_address)
+	    except OSError:
+	        if os.path.exists(server_address):
+	            raise
+	    server = socket.socket(socket.AF_UNIX, socket.SOCK_STREAM)
+	    server.bind(server_address)
+    	    while True:
+    	        server.listen(1)
+    	        conn, addr = server.accept()
+    	        try:
+    	    	    # Receive the data in small chunks and retransmit it
+    	    	    while True:
+    	    	        #RF Data Size
+    	    	        rf_data_size = 4;
+    	    	        buff = connection.recv(rf_data_size)
+    	    	        (power, angle) = struct.unpack("!HH",buff)
+    	    		power_data.append((power, angle))    
+    	        finally:
+    	    	    # Clean up the connection
+    	    	    connection.close()
+    thread.start_new_thread(listen_for_data,())
     print("Starting rotation and AUT measurement")
+    return "Thanks for checking in!"
 
 @app.route("/angle")
 def setrotation():

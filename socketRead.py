@@ -18,7 +18,7 @@ while True:
         # Receive the data in small chunks and retransmit it
         while True:
             #RF Data Size
-            rf_data_size = 32;
+            rf_data_size = 4;
             buff = connection.recv(rf_data_size)
             (power, angle) = struct.unpack("!HH",buff)
             #Push power and angle off onto a global structure (Redis? Another KV store? a crazy global variable???)
