@@ -1,6 +1,6 @@
 from flask import Flask
 from flask import render_template
-import JSON
+#import JSON
 app = Flask(__name__)
 
 @app.route('/static/<path:path>')
@@ -33,12 +33,13 @@ def setrotation():
 def scratch():
     return render_template('scratch.html')
 
-@app.route("/getdata")
-def serialize_plot_data():
-    data = {
-        type = "scatterpolar",
-        mode = "lines+markers",
-        r   = [],
-        theta = []
-    }
-    return JSON.serialize(data)
+#@app.route("/getdata")
+#def serialize_plot_data():
+#    data = {
+#        type = "scatterpolar",
+#        mode = "lines+markers",
+#        r   = [],
+#        theta = []
+#    }
+#    return JSON.serialize(data)
+
