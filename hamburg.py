@@ -53,7 +53,7 @@ def start_test():
                     buff = conn.recv(rf_data_size)
                     if buff:
                         if len(buff) == rf_data_size:
-                            (power, angle) = struct.unpack("!HH",buff)
+                            (power, angle) = struct.unpack("HH",buff)
                             print("Power: %d, Angle: %d" % (power, angle))
                             power_data.append((power, angle))
                         else:
