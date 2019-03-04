@@ -30,6 +30,11 @@ def plotmeasurement():
     print(power_data)
     return render_template('plotmeasurement.html')
 
+@app.route("/reset")
+def reset_data():
+    power_data = []
+    return "Global Power Data has been reset"
+
 @app.route("/start")
 def start_test():
     #Send command to Sean to start AUT rotation and measurement...

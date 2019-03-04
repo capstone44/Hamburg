@@ -7,14 +7,8 @@
 <div id="myDiv"></div>
 <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 
-
-<script>
-    plotGraph(dataInit)
-</script>>
-    
-<button onclick="plotGraph(dataNode)">Import Data</button>
-
-
+<button onclick="plotGraph(dataNode)">Import Fake Data</button>
+<button onclick="getAndPlotGraph()">Import Data From Real System</button>
 
 <script>
     var trace = {
@@ -24,7 +18,7 @@
         mode: 'markers'
     };
     var data = [trace];
-    var layout = {   
+    var layout = {
         title: 'Antenna Pettern',
         polar: {
             radialaxis: {
@@ -33,9 +27,8 @@
             }
         }
     };
-    Plotly.newPlot('myDiv', data, layout, {});  
+    Plotly.newPlot('myDiv', data, layout, {});
 </script>
-
 
 <script>
     var dataInit = {
@@ -54,7 +47,7 @@
 
 function plotGraph(trace){
     var data = [trace];
-    var layout = {   
+    var layout = {
         title: 'Antenna Pettern',
         polar: {
             radialaxis: {
@@ -63,8 +56,25 @@ function plotGraph(trace){
             }
         }
     };
-    Plotly.newPlot('myDiv', data, layout, {});  
+    Plotly.newPlot('myDiv', data, layout, {});
 }
-</script>    
+function getAndPlotGraph(){
+    httpRequest = new XMLHttpRequest();
+    httpRequest.onreadystatechange = handleDataToGraph;
+    httpRequest.open('GET','/getdata', true);
+    httpRequest.send();
+}
+function handleDataToGraph(){
+    if(httpRequest.readyState === XMLHttpRequest.DONE){
+        if(httpRequest.status === 200){
+            data = JSON.parse(httpRequest.responseText);
+            plotGraph(data);
+        }
+        else {
+            alert('Getting Data Failed!');
+        }
+    }
+}
+</script>
 
 {% endblock %}
