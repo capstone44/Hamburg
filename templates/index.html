@@ -1,38 +1,43 @@
 {% extends "layout.html" %}
 {% block content %}
-<div class="text-center">
-    <div class="hero-body">
-        <h1>ACE Antenna Measurement System</h1>
+<div class="columns">
+    <div class="column col-6 col-xs-12">
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title h5">Quick Start</div>
+            </div>
+            <div class="card-image">
+                <img src="/static/img/sonic-book.png" class="img-responsive">
+            </div>
+            <div class="card-footer">
+                <a href="/quickstart" class="btn p-centered btn-primary btn-lg">Quick Start Guide</a>
+            </div>
+        </div>
     </div>
-    <div class="card">
-        <div class="card-image">
-            <img src="img/sonic-book.jpg" class="img-responsive">
-        </div>
-        <div class="card-header">
-            <div class="card-title h5">Quick Start</div>
-        </div>
-        <div class="card-footer">
-            <a href="/quickstart" class="btn p-centered btn-primary btn-lg">Quick Start Guide</a>
+    <div class="column col-6 col-xs-12">
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title h5">Analyze an Antenna</div>
+            </div>
+            <div class="card-image">
+                <img src="/static/img/ant-chamber.jpg" class="img-responsive">
+            </div>
+            <div class="card-footer">
+            <a href="/plotmeasurement" class="btn p-centered btn-primary btn-lg">Start Measurement</a>
+            </div>
         </div>
     </div>
-    <div class="card">
-        <div class="card-image">
-            <img src="img/ant-chamber.jpg" class="img-responsive">
-        </div>
-        <div class="card-header">
-            <div class="card-title h5">Analyze an Antenna</div>
-        </div>
-        <a href="/plotmeasurement" class="btn p-centered btn-primary btn-lg">Start Measurement</a>
-    </div>
-    <div class="card">
-        <div class="card-image">
-            <img src="img/documents.jpg" class="img-responsive">
-        </div>
-        <div class="card-header">
-            <div class="card-title h5">Learn How It Works</div>
-        </div>
-        <div class="card-footer">
-            <a href="/quickstart" class="btn p-centered btn-primary btn-lg">Documentation</a>
+    <div class="column col-6 col-xs-12">
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title h5">Learn How It Works</div>
+            </div>
+            <div class="card-image">
+                <img src="/static/img/documents.jpg" class="img-responsive">
+            </div>
+            <div class="card-footer">
+                <a href="/quickstart" class="btn p-centered btn-primary btn-lg">Documentation</a>
+            </div>
         </div>
     </div>
 </div>

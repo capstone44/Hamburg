@@ -2,12 +2,13 @@
 <html>
     <head>
         <title>ACE Antenna Measurement System</title>
-        <link rel="stylesheet" href="static/css/spectre.min.css">
-        <link rel="stylesheet" href="static/css/spectre-exp.min.css">
-        <link rel="stylesheet" href="static/css/spectre-icons.min.css">
-        <link rel="stylesheet" href="static/css/scratchCSS.css">
-        <script type="text/script" src="static/js/d3.min.js"></script>
-        <script type="text/script" src="static/js/scratchJS.js"></script>
+        <link rel="stylesheet" href="/static/css/spectre.min.css">
+        <link rel="stylesheet" href="/static/css/spectre-exp.min.css">
+        <link rel="stylesheet" href="/static/css/spectre-icons.min.css">
+        <link rel="stylesheet" href="/static/css/docs.min.css">
+        <link rel="stylesheet" href="/static/css/scratchCSS.css">
+        <script type="text/script" src="/static/js/d3.min.js"></script>
+        <script type="text/script" src="/static/js/scratchJS.js"></script>
     </head>
     <body>
         <header class="navbar">
@@ -16,15 +17,16 @@
                 <a href="/#" class="navbar-brand mr-2">ACE Antenna Measurement System</a>
             </section>
             <section class="navbar-center">
-                <img src="img/ant.svg" />
+                <img src="/static/img/ant.svg" style="width: 30%;"/>
             </section>
             <section class="navbar-section">
                 <a href="http://github.com/capstone44/" class="btn btn-link">Sources</a>
             </section>
         </header>
-
-        <div class="container">
-            {% block content %}{% endblock %}
+        <div class="docs-content">
+            <div class="container">
+                {% block content %}{% endblock %}
+            </div>
         </div>
     </body>
 </html>
