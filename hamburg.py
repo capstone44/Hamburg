@@ -13,6 +13,9 @@ app = Flask(__name__)
 global power_data
 power_data = []
 
+global measurement_running
+measurement_running = False
+
 @app.route('/static/<path:path>')
 def send_js(path):
         return send_from_directory('static', path)
@@ -27,6 +30,11 @@ def quickstart():
 
 @app.route("/plotmeasurement")
 def plotmeasurement():
+    if measurement_running:
+        pass
+    else:
+        measurement_running = True
+        start_test()
     print(power_data)
     return render_template('plotmeasurement.html')
 
