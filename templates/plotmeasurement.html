@@ -1,15 +1,19 @@
 {% extends "layout.html" %}
 {% block content %}
-
-<script type="text/script" src="/static/js/scatter_plot_3d_demo.js"></script>
-
-
-<div id="myDiv"></div>
 <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+<script type="text/script" src="/static/js/scatter_plot_3d_demo.js"></script>
+<div class="columns">
+    <div class="col-8">
+        <div id="myDiv"></div>
+    </div>
+    <div class="col-4">
+        <center>
+            <button class="btn btn-success btn-lg" onclick="getAndPlotGraph()">Import Measured Data</button>
 
-<button onclick="plotGraph(dataNode)">Import Fake Data</button>
-<button onclick="getAndPlotGraph()">Import Data From Real System</button>
-
+            <button class="btn" onclick="plotGraph(dataNode)">Import Fake Data</button>
+        </center>
+    </div>
+</div>
 <script>
     var trace = {
         type: "scatterpolar",
@@ -28,15 +32,7 @@
         }
     };
     Plotly.newPlot('myDiv', data, layout, {});
-</script>
 
-<script>
-    var dataInit = {
-        type: "scatterpolar",
-        r: [0],
-        theta: [0],
-        mode: 'markers'
-    };
     var dataNode = {
         type: "scatterpolar",
         r: [0, 0.75, 1.75, 2.25, 1.75, 0.75, 0],
@@ -44,37 +40,36 @@
         mode: 'lines+markers'
     };
 
-
-function plotGraph(trace){
-    var data = [trace];
-    var layout = {
-        title: 'Antenna Pettern',
-        polar: {
-            radialaxis: {
-                visible: true,
-                range: [0, 5]
+    function plotGraph(trace){
+        var data = [trace];
+        var layout = {
+            title: 'Antenna Pattern',
+            polar: {
+                radialaxis: {
+                    visible: true,
+                    range: [0, 5]
+                }
+            }
+        };
+        Plotly.newPlot('myDiv', data, layout, {});
+    }
+    function getAndPlotGraph(){
+        httpRequest = new XMLHttpRequest();
+        httpRequest.onreadystatechange = handleDataToGraph;
+        httpRequest.open('GET','/getdata', true);
+        httpRequest.send();
+    }
+    function handleDataToGraph(){
+        if(httpRequest.readyState === XMLHttpRequest.DONE){
+            if(httpRequest.status === 200){
+                data = JSON.parse(httpRequest.responseText);
+                plotGraph(data);
+            }
+            else {
+                alert('Getting Data Failed!');
             }
         }
-    };
-    Plotly.newPlot('myDiv', data, layout, {});
-}
-function getAndPlotGraph(){
-    httpRequest = new XMLHttpRequest();
-    httpRequest.onreadystatechange = handleDataToGraph;
-    httpRequest.open('GET','/getdata', true);
-    httpRequest.send();
-}
-function handleDataToGraph(){
-    if(httpRequest.readyState === XMLHttpRequest.DONE){
-        if(httpRequest.status === 200){
-            data = JSON.parse(httpRequest.responseText);
-            plotGraph(data);
-        }
-        else {
-            alert('Getting Data Failed!');
-        }
     }
-}
 </script>
 
 {% endblock %}

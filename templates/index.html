@@ -1,21 +1,40 @@
 {% extends "layout.html" %}
 {% block content %}
 <div class="text-center">
-	<div class="hero-body">
-		<h1>ACE Antenna Measurement System</h1>
-	</div>
-	<br><br><br><br><br><br>
-	Welcome! If this is your first time, please read the quick start bellow
-	<br>
-	<a href="/quickstart" class="btn btn-primary">Quick Start</a>
-
-	<br><br><br><br><br><br><br>
-	Ready to plot? Click the button Bellow
-	<br>
-	<a href="/plotmeasurement" class="btn btn-primary">Plot Measurement</a>
-    
-    <br><br><br><br>
-    <a href="/scratch" class="btn btn-primary">Scratch Page</a>
+    <div class="hero-body">
+        <h1>ACE Antenna Measurement System</h1>
+    </div>
+    <div class="card">
+        <div class="card-image">
+            <img src="img/sonic-book.jpg" class="img-responsive">
+        </div>
+        <div class="card-header">
+            <div class="card-title h5">Quick Start</div>
+        </div>
+        <div class="card-footer">
+            <a href="/quickstart" class="btn p-centered btn-primary btn-lg">Quick Start Guide</a>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-image">
+            <img src="img/ant-chamber.jpg" class="img-responsive">
+        </div>
+        <div class="card-header">
+            <div class="card-title h5">Analyze an Antenna</div>
+        </div>
+        <a href="/plotmeasurement" class="btn p-centered btn-primary btn-lg">Start Measurement</a>
+    </div>
+    <div class="card">
+        <div class="card-image">
+            <img src="img/documents.jpg" class="img-responsive">
+        </div>
+        <div class="card-header">
+            <div class="card-title h5">Learn How It Works</div>
+        </div>
+        <div class="card-footer">
+            <a href="/quickstart" class="btn p-centered btn-primary btn-lg">Documentation</a>
+        </div>
+    </div>
 </div>
 {% endblock %}
 

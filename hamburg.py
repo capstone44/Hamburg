@@ -33,7 +33,7 @@ def plotmeasurement():
 @app.route("/reset")
 def reset_data():
     power_data = []
-    return "Global Power Data has been reset"
+    return "RESET OK"
 
 @app.route("/start")
 def start_test():
@@ -71,16 +71,12 @@ def start_test():
     t = threading.Thread(target=listen_for_data)
     t.start()
     print("Starting rotation and AUT measurement")
-    return "Thanks for checking in!"
+    return "OK"
 
 @app.route("/angle")
 def setrotation():
     #Send command over socket to Sean's Code
     print("Set new rotation to: ")
-
-@app.route("/scratch")
-def scratch():
-    return render_template('scratch.html')
 
 @app.route("/getdata")
 def serialize_plot_data():
