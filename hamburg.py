@@ -69,7 +69,7 @@ def start_test():
                     if buff:
                         if len(buff) == rf_data_size:
                             (power, angle) = struct.unpack("fh",buff)
-                            print("Power: %d, Angle: %d" % (power, angle))
+                            print("Power: %f, Angle: %d" % (power, angle))
                             power_data.append((power, angle))
                         else:
                             print("I got some garbage...")
