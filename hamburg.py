@@ -41,6 +41,7 @@ def plotmeasurement():
 
 @app.route("/reset")
 def reset_data():
+    global power_data
     power_data = []
     return "RESET OK"
 

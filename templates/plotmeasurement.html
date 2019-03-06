@@ -3,10 +3,10 @@
 <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 <script type="text/script" src="/static/js/scatter_plot_3d_demo.js"></script>
 <div class="columns">
-    <div class="col-10 col-xs-12">
+    <div class="col-9 col-xs-12">
         <div id="myDiv"></div>
     </div>
-    <div class="col-2 col-xs-12">
+    <div class="col-3 col-xs-12">
         <div class="card">
             <div class="card-header">
                 <button class="btn btn-success btn-lg" onclick="getAndPlotGraph()">Display Measured Data</button>
@@ -78,13 +78,6 @@
     }
     function resetPowerData(){
         httpRequest = new XMLHttpRequest();
-        httpRequest.onreadystatechange = function(){
-            if(httpRequest.status === 200){
-            }
-            else {
-                alert('Data Reset Failed!');
-            }
-        };
         httpRequest.open('GET','/reset', true);
         httpRequest.send();
     }
