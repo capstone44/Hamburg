@@ -64,11 +64,11 @@ def start_test():
                 # Receive the data in small chunks and retransmit it
                 while True:
                     #RF Data Size
-                    rf_data_size = 4;
+                    rf_data_size = 6;
                     buff = conn.recv(rf_data_size)
                     if buff:
                         if len(buff) == rf_data_size:
-                            (power, angle) = struct.unpack("HH",buff)
+                            (power, angle) = struct.unpack("fh",buff)
                             print("Power: %d, Angle: %d" % (power, angle))
                             power_data.append((power, angle))
                         else:
