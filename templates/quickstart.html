@@ -1,29 +1,39 @@
 {% extends "layout.html" %}
 {% block content %}
 <div class="text-center">
-		    <div class="hero-body">
-            <h1>ACE Antenna Measurement System</h1>
-            </div>
-            <div class="text-left">
-            <h2>Hardware</h2>
-            <ol>
-              <li>Choose antenna to measure</li>
-              <ul>
-                  <li>Antenna 1:<br>Patch antenna with a direct beam</li>
-                  <li>Antenna 2:<br>Patch antenna with 45 degree directed beam</li>
-              </ul>
-              <li>Insert chosen antenna into transmitting tower</li>
-              <li>Plug in the Antenna Measurement System into wall outlet</li>
-            </ol> 
-            <h2>Create Plot</h2>
-            <ol>
-              <li>Choose rotation time</li>
-              <li>Choose rotation angle</li>
-              <li>Run Antenna Measurement</li>
-              <li>Import data</li>
-              <li>Choose graph type</li>
-              <li>Plot graph</li>
-            </ol> 
-            </div>
-		</div>
+    <div class="hero-body">
+    <h1>Quick Start</h1>
+    </div>
+    
+    <div class="text-left">
+        <h3>Introduction</h3>
+        <p>
+        Welcome! This quick start will help you get started plotting and analyzing your antenna pattern. First, we will walk you through how to plot your data, then we will explain some basic ideas behind the plot so that you understand what the plot means. Let’s get started! 
+        </p>
+        
+        <h3>Example</h3>
+        <p>
+        After the hardware system is constructed and set up for a test (see hardware guide for help with this) then you are ready to use the Antenna Measurement System website to start capturing data.
+        To start, first click the PLOT DATA button.
+        <br>SCREEN SHOT<br>
+        After you click this button, you should see the Antenna Under Test (AUT) start to rotate. The AUT is sending out its signal and the receiving antenna is picking it up and storing that signal. After the AUT is done rotating you can view its signal by clicking the IMPORT DATA button.
+        <br>SCREEN SHOT<br>
+        After clicking the IMPORT DATA button, the signal from the rotating antenna will be plotted.
+        <br>SCREEN SHOT<br>
+        And that’s all there is too it.
+        For an understanding of what the plot means, read the simple explanations bellow
+        </p>
+
+        <h3>Theory</h3>
+        <p>
+            First, we’ll start with the antenna pattern. Antennas send out information through pulses in electromagnetic waves. Because these waves are invisible to the eye, it is not commonly known that the electromagnetic pulses from antennas are not simply spherical shapes. In fact, their shapes are far more complicated and beautiful than a sphere. Several examples of antenna patters can be seen in the bellow figures.
+            <br>FIGURES (antenna patterns with the names of the antenna producing it<br>
+            Each antenna is designed to have a specific antenna pattern and each pattern has its own unique use. Below is an antenna pattern measured with the Antenna Measurement System, from the above figures, can you tell what kind of antenna was being measured?
+            <br>FIGURE (plotted data from website)<br>
+            If you said dipole antenna, then you are correct!
+        </p>
+
+
+    </div>
+</div>
 {% endblock %}
