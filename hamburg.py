@@ -6,6 +6,7 @@ import sys
 import os
 import threading
 import struct
+import math
 
 server_address = "/tmp/power_data.sock"
 app = Flask(__name__)
@@ -64,12 +65,12 @@ def start_test():
                 # Receive the data in small chunks and retransmit it
                 while True:
                     #RF Data Size
-                    rf_data_size = 6;
+                    rf_data_size = 16;
                     buff = conn.recv(rf_data_size)
                     if buff:
                         if len(buff) == rf_data_size:
-                            (power, angle) = struct.unpack("fh",buff)
-                            print("Power: %f, Angle: %d" % (power, angle))
+                            (power, angle) = struct.unpack("dd",buff)
+                            print("Power: %f, Angle: %f" % (power, angle))
                             power_data.append((power, angle))
                         else:
                             print("I got some garbage...")
@@ -88,6 +89,9 @@ def setrotation():
     #Send command over socket to Sean's Code
     print("Set new rotation to: ")
 
+def convert_to_db(x):
+    return 20 * math.log10(x) + 30
+
 @app.route("/getdata")
 def serialize_plot_data():
     r = []
@@ -95,6 +99,7 @@ def serialize_plot_data():
     for i in range(len(power_data)):
         r.append(power_data[i][0])
         theta.append(power_data[i][1])
+    r = [convert_to_db(x) for x in r]
     data = {
         "type" : "scatterpolar",
         "mode" : "lines+markers",
