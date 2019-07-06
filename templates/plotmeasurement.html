@@ -25,7 +25,7 @@
                 <h3> Measurement Settings </h3>
             </div>
             <div class="card-body">
-                <form action="/runsystem" method="POST">
+                <form action="/runsystem" method="POST" target="dummyframe">
                     <div class="form-group">
                         <div class="col-3">
                             <label class="form-label" for="stepSize">Rotation Step Size</label>
@@ -42,12 +42,13 @@
                             <input class="form-input" id="rotAng" name="rotAng" type="number" placeholder="180">
                         </div>
                     </div>
-                <button type ="submit" class="btn btn-success btn-lg" onclick="setInterval(function() { getAndPlotGraph() }, 500)">Begin Measurement</button>
+                    <button type ="submit" class="btn btn-success btn-lg" onclick="setInterval(function() { getAndPlotGraph() }, 500)">Begin Measurement</button>
                 </form>
             </div>
         </div>
     </div>
 </div>
+<iframe width="0" height="0" border="0" name="dummyframe" id="dummyframe" style="display: none;"></iframe>
 <script>
     var trace = {
         type: "scatterpolar",
@@ -100,7 +101,7 @@
                 plotGraph(data);
             }
             else {
-                alert('Getting Data Failed!');
+                    console.log('Getting Data Failed!');
             }
         }
     }

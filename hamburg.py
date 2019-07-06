@@ -94,7 +94,8 @@ def exec_system():
     stepSize = int(request.form['stepSize'])
     rotationAng = int(request.form['rotAng'])
     print("Executing measurement with step size: "+ str(stepSize) + " and rotation of: " + str(rotationAng))
-    runsystem(stepSize,rotationAng)
+    t2 = threading.Thread(target=runsystem,args=(stepSize,rotationAng))
+    t2.start()
     return "OK"
 
 def convert_to_db(x):
