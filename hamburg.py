@@ -89,8 +89,10 @@ def start_test():
 @app.route("/runsystem", methods=['POST'])
 def exec_system():
     #Send command over socket to Sean's Code
-    stepSize = int(request.form('stepSize'))
-    rotationAng = int(request.form('rotAng'))
+    if not request.form:
+        return "BAD FORM DATA"
+    stepSize = int(request.form['stepSize'])
+    rotationAng = int(request.form['rotAng'])
     print("Executing measurement with step size: "+ str(stepSize) + " and rotation of: " + str(rotationAng))
     runsystem(stepSize,rotationAng)
     return "OK"
