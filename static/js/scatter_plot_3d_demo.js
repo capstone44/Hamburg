@@ -1,12 +1,12 @@
 // Create a 3d scatter plot within d3 selection parent.
 function scatterPlot3d( parent )
 {
-  var x3d = parent  
+  var x3d = parent
     .append("x3d")
       .style( "width", parseInt(parent.style("width"))+"px" )
       .style( "height", parseInt(parent.style("height"))+"px" )
       .style( "border", "none" )
-      
+
   var scene = x3d.append("scene")
   scene.append("orthoviewpoint")
      .attr( "centerOfRotation", [5, 5, 5])
@@ -102,7 +102,7 @@ function scatterPlot3d( parent )
     var scale = d3.scale.linear()
       .domain( [-5,5] ) // demo data range
       .range( axisRange )
-    
+
     scales[axisIndex] = scale;
 
     var numTicks = 8;
@@ -120,7 +120,7 @@ function scatterPlot3d( parent )
         .attr("size", tickSize + " " + tickSize + " " + tickSize);
     // enter + update
     ticks.transition().duration(duration)
-      .attr("translation", function(tick) { 
+      .attr("translation", function(tick) {
          return constVecWithAxisValue( 0, scale(tick), axisIndex ); })
     ticks.exit().remove();
 
@@ -129,7 +129,7 @@ function scatterPlot3d( parent )
       .data(function(d) { return [d]; });
     var newTickLabels = tickLabels.enter()
       .append("billboard")
-         .attr("axisOfRotation", "0 0 0")     
+         .attr("axisOfRotation", "0 0 0")
       .append("shape")
       .call(makeSolid)
     newTickLabels.append("text")
@@ -149,7 +149,7 @@ function scatterPlot3d( parent )
       var gridLines = scene.selectAll( "."+axisName("GridLine", axisIndex))
          .data(scale.ticks( numTicks ));
       gridLines.exit().remove();
-      
+
       var newGridLines = gridLines.enter()
         .append("transform")
           .attr("class", axisName("GridLine", axisIndex))
@@ -169,12 +169,12 @@ function scatterPlot3d( parent )
             ? function(d) { return scale(d) + " 0 0"; }
             : function(d) { return "0 0 " + scale(d); }
           )
-    }  
+    }
   }
 
   // Update the data points (spheres) and stems.
   function plotData( duration ) {
-    
+
     if (!rows) {
      console.log("no rows to plot.")
      return;
@@ -204,11 +204,11 @@ function scatterPlot3d( parent )
         .attr("diffuseColor", 'steelblue' )
 
     datapoints.transition().ease(ease).duration(duration)
-        .attr("translation", function(row) { 
+        .attr("translation", function(row) {
           return x(row[axisKeys[0]]) + " " + y(row[axisKeys[1]]) + " " + z(row[axisKeys[2]])})
 
     // Draw a stem from the x-z plane to each sphere at elevation y.
-    // This convention was chosen to be consistent with x3d primitive ElevationGrid. 
+    // This convention was chosen to be consistent with x3d primitive ElevationGrid.
     var stems = scene.selectAll(".stem").data( rows );
     stems.exit().remove();
 
@@ -225,7 +225,7 @@ function scatterPlot3d( parent )
         .attr("lineSegments", function(row) { return "0 1, 0 0"; })
 
     stems.transition().ease(ease).duration(duration)
-        .attr("translation", 
+        .attr("translation",
            function(row) { return x(row[axisKeys[0]]) + " 0 " + z(row[axisKeys[2]]); })
         .attr("scale",
            function(row) { return [1, y(row[axisKeys[1]])]; })

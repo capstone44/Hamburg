@@ -90,7 +90,7 @@ def setrotation():
     print("Set new rotation to: ")
 
 def convert_to_db(x):
-    return 20 * math.log10(x) + 30
+    return 20 * math.log10(x)
 
 @app.route("/getdata")
 def serialize_plot_data():
@@ -100,6 +100,8 @@ def serialize_plot_data():
         r.append(power_data[i][0])
         theta.append(power_data[i][1])
     r = [convert_to_db(x) for x in r]
+    max_val = max(r)
+    r = [x - max_val for x in r]
     data = {
         "type" : "scatterpolar",
         "mode" : "lines+markers",

@@ -9,8 +9,7 @@
     <div class="col-3 col-xs-12">
         <div class="card">
             <div class="card-header">
-            <!--<button class="btn btn-success btn-lg" onclick="setInterval(function() { getAndPlotGraph() }, 500)">Display Measured Data</button>-->
-                <button class="btn btn-success btn-lg" onclick="getAndPlotGraph()">Display Measured Data</button>
+            <button class="btn btn-success btn-lg" onclick="setInterval(function() { getAndPlotGraph() }, 500)">Display Measured Data</button>
             </div>
             <div class="card-body">
                 The measured (or fake) Antenna pattern is shown in polar form.
@@ -34,7 +33,7 @@
         polar: {
             radialaxis: {
                 visible: true,
-                range: [-30, 30]
+                range: [-30, 0]
             }
         }
     };
@@ -54,7 +53,7 @@
             polar: {
                 radialaxis: {
                     visible: true,
-                    range: [-30, 30]
+                    range: [-30, 0]
                 }
             }
         };
