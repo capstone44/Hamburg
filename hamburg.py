@@ -1,5 +1,6 @@
 from flask import Flask
 from flask import render_template
+from flask import request
 import json
 import socket
 import sys
@@ -7,6 +8,7 @@ import os
 import threading
 import struct
 import math
+from runsystem import *
 
 server_address = "/tmp/power_data.sock"
 app = Flask(__name__)
@@ -84,10 +86,14 @@ def start_test():
     print("Starting rotation and AUT measurement")
     return "OK"
 
-@app.route("/angle")
-def setrotation():
+@app.route("/runsystem", methods=['POST'])
+def exec_system():
     #Send command over socket to Sean's Code
-    print("Set new rotation to: ")
+    stepSize = int(request.form('stepSize'))
+    rotationAng = int(request.form('rotAng'))
+    print("Executing measurement with step size: "+ str(stepSize) + " and rotation of: " + str(rotationAng))
+    runsystem(stepSize,rotationAng)
+    return "OK"
 
 def convert_to_db(x):
     return 20 * math.log10(x)
